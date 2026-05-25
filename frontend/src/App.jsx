@@ -8,11 +8,14 @@ import Invoices from "./pages/Invoices";
 import Customers from "./pages/Customers";
 import Analytics from "./pages/Analytics";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
   return (
     <Routes>
 
+      {/* Dashboard */}
       <Route
         path="/"
         element={
@@ -22,6 +25,7 @@ function App() {
         }
       />
 
+      {/* Products */}
       <Route
         path="/products"
         element={
@@ -31,6 +35,7 @@ function App() {
         }
       />
 
+      {/* Invoices */}
       <Route
         path="/invoices"
         element={
@@ -40,6 +45,7 @@ function App() {
         }
       />
 
+      {/* Customers */}
       <Route
         path="/customers"
         element={
@@ -49,6 +55,7 @@ function App() {
         }
       />
 
+      {/* Analytics */}
       <Route
         path="/analytics"
         element={
@@ -58,10 +65,28 @@ function App() {
         }
       />
 
+      {/* Login */}
       <Route
         path="/login"
         element={<Login />}
       />
+
+      {/* Register */}
+      <Route
+        path="/register"
+        element={<Register />}
+      />
+      {/* Protected Dashboard */}
+      <Route
+  path="/"
+  element={
+    <ProtectedRoute>
+      <DashboardLayout>
+        <Dashboard />
+      </DashboardLayout>
+    </ProtectedRoute>
+  }
+/>
 
     </Routes>
   );

@@ -2,13 +2,10 @@ import { useState } from "react";
 
 import axios from "axios";
 
-import { useNavigate } from "react-router-dom";
-
-function Login() {
-
-  const navigate = useNavigate();
+function Register() {
 
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     password: "",
   });
@@ -30,23 +27,13 @@ function Login() {
     try {
 
       const res = await axios.post(
-        "http://localhost:5000/api/auth/login",
+        "http://localhost:5000/api/auth/register",
         formData
-      );
-
-      localStorage.setItem(
-        "token",
-        res.data.token
-      );
-
-      localStorage.setItem(
-        "user",
-        JSON.stringify(res.data.user)
       );
 
       alert(res.data.message);
 
-      navigate("/");
+      console.log(res.data);
 
     } catch (error) {
 
@@ -66,8 +53,18 @@ function Login() {
       >
 
         <h1 className="text-3xl font-bold mb-6 text-center">
-          Login
+          Register
         </h1>
+
+
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter Name"
+          value={formData.name}
+          onChange={handleChange}
+          className="w-full border p-3 rounded-lg mb-4"
+        />
 
 
         <input
@@ -94,7 +91,7 @@ function Login() {
           type="submit"
           className="w-full bg-black text-white p-3 rounded-lg"
         >
-          Login
+          Register
         </button>
 
       </form>
@@ -103,4 +100,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
