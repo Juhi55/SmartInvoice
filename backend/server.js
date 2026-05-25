@@ -12,6 +12,8 @@ const app = express();
 
 const productRoutes = require("./routes/productRoutes");
 
+const customerRoutes = require("./routes/customerRoutes");
+
 connectDB();
 
 app.use(cors());
@@ -21,6 +23,8 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 
 app.use("/api/products", productRoutes);
+
+app.use("/api/customers", customerRoutes);
 
 app.get("/", (req, res) => {
   res.send("Backend Running");
